@@ -8,7 +8,7 @@ import requests
 # 通过经纬度获取地址,调用百度地图API
 def getTrueAddress(latitude, longitude):
     url = "https://api.map.baidu.com/reverse_geocoding/v3"
-    ak = "Hrf5RG7vxBeo4nI5hPvqLx6BodxQTuNK"
+    ak = ""  # 此处填入您申请的ak
     location = str(latitude) + ',' + str(longitude)
     params = {
         "ak": ak,
