@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photo Viewer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+</head>
+<body>
+    <div class="container">
+        {# 顶部导航栏 #}
+        <header>
+            <a href="/" class="logo">Photo Viewer</a>
+            <div></div><div></div><div></div><div></div><div></div>
+            {# 时间查询 #}
+            <form action="http://localhost:5000/post/time" method="post">
+                <input type="date" name="start_time" value="2022-01-01"/>
+                <input type="date" name="end_time" value="2024-01-01"/>
+                <button type="submit"><img class="search-icon" src="../static/icon/search.png"></button>
+            </form>
+            {# 地点查询 #}
+            <form action="http://localhost:5000/post/address" method="post">
+                <input type="text" name="address" placeholder="搜索地点" class="search-box">
+                <button type="submit"><img class="search-icon" src="../static/icon/search.png"></button>
+            </form>
+            {# 排序按钮 #}
+            <form>
+                <div id="showOrder" class="order-show"></div>
+                <a id="setOrder" href="/id_asc"><img class="order-icon" src="../static/icon/order.png"></a>
+            </form>
+            {# 上传按钮 #}
+            <input type="file" id="imgUpload" class="file-upload-input" accept="image/*">
+            <label class="file-upload-label">
+                <span class="file-upload-text">上传</span>
+            </label>
+        </header>
+        {# 页面主体 #}
+        <main class="main-content">
+            <section class="photo-section">
+                <div class="photo-grid">
+                    {% for image in images %}
+                        <div class="photo-item">
+                            <img alt="image" src={{ '../static/image/' + image.url }}>
+                            <div class="photo-info">
+                                <p>{{ image.datetime }}</p>
+                                <p>{{ image.address }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if images == [] %}
+                    <div class="none-tip">无照片</div>
+                {% endif %}
+            </section>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>
