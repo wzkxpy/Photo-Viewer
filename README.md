@@ -8,4 +8,4 @@
 
 项目所需环境在文件requirements.txt，可使用如下命令安装环境
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
