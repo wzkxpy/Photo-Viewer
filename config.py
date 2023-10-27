@@ -7,9 +7,9 @@ UPLOAD_FOLDER = basedir + '\\static\\image'
 # 数据库配置信息
 HOSTNAME = 'localhost'
 PORT = '3306'
-USERNAME = 'root'
-PASSWORD = '123456'
-DATABASE = 'imgViewer'
+USERNAME = ''  # mysql用户名
+PASSWORD = ''  # mysql密码
+DATABASE = '' # 数据库名称
 DB_URI = f"mysql+pymysql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DATABASE}?charset=utf8mb4"
 SQLALCHEMY_DATABASE_URI = DB_URI
 
